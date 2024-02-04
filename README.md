@@ -22,5 +22,5 @@ nano .env
 ## Launch local dev Slack app server
 
 ```sh
-npm run dev
+npm start
 ```
