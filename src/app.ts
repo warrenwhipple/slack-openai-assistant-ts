@@ -24,6 +24,10 @@ const noSubtype: ReturnType<typeof subtype> = async ({ message, next }) => {
 app.message(noSubtype, async ({ message, say }) => {
   if (message.subtype) return;
   if (!message.text) return;
+  if (message.text.toLocaleLowerCase() === "ping") {
+    await say("pong");
+    return;
+  }
   const chatCompletion = await openai.chat.completions.create({
     model,
     messages: [{ role: "user", content: message.text }],
