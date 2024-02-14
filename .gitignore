@@ -1,9 +1,15 @@
-.esbuild/
+.DS_Store
+
 .build/
+.esbuild/
+.serverless/
 dist/
 node_modules/
 
-.DS_Store
+
 .env
+.env.*
+!.env.example
+
 *.scratchpad.*
 scratchpad.*

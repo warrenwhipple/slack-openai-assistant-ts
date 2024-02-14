@@ -2,13 +2,13 @@
   "name": "slack-openai-assistant-ts",
   "private": true,
   "scripts": {
-    "dev": "npx serverless offline --noPrependStageInUrl",
-    "localtunnel": "npx localtunnel -p 3000",
+    "deploy": "npx serverless deploy --stage dev",
+    "dev": "npx serverless offline --stage local --noPrependStageInUrl",
+    "localtunnel": "npx localtunnel --port 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@slack/bolt": "^3.17.1",
-    "dotenv": "^16.4.1",
     "esbuild": "^0.20.0",
     "node-fetch": "^3.3.2",
     "openai": "^4.26.0"

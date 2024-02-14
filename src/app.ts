@@ -1,6 +1,5 @@
 import { App, AwsLambdaReceiver, subtype } from "@slack/bolt";
 import type { AwsHandler } from "@slack/bolt/dist/receivers/AwsLambdaReceiver";
-import "dotenv/config";
 import fetch from "node-fetch";
 import OpenAI from "openai";
 import { sleep } from "openai/core";
