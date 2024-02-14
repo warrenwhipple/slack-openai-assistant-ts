@@ -1,15 +1,19 @@
-import Slack from "@slack/bolt";
+import { App, AwsLambdaReceiver, subtype } from "@slack/bolt";
+import type { AwsHandler } from "@slack/bolt/dist/receivers/AwsLambdaReceiver";
 import "dotenv/config";
 import fetch from "node-fetch";
 import OpenAI from "openai";
 import { sleep } from "openai/core";
-import { Assistant } from "openai/resources/beta/assistants/assistants";
+import type { Assistant } from "openai/resources/beta/assistants/assistants";
 
-const { App, subtype } = Slack;
+const awsLambdaReceiver = new AwsLambdaReceiver({
+  signingSecret:
+    process.env.SLACK_SIGNING_SECRET || "SLACK_SIGNING_SECRET_IS_EMPTY",
+});
+
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
-  socketMode: true,
-  appToken: process.env.SLACK_APP_TOKEN,
+  receiver: awsLambdaReceiver,
 });
 
 const openai = new OpenAI();
@@ -102,7 +106,7 @@ app.message(subtype("file_share"), async ({ message, say }) => {
   await say(content.text.value);
 });
 
-(async () => {
-  await app.start(Number(process.env.PORT) || 3000);
-  console.log("⚡️ Bolt app is running!");
-})();
+module.exports.handler = (async (event, context, callback) => {
+  const handler = await awsLambdaReceiver.start();
+  return handler(event, context, callback);
+}) as AwsHandler;

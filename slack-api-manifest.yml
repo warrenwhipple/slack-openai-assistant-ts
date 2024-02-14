@@ -1,10 +1,10 @@
 display_information:
-  name: OpenAI TS
-  description: OpenAI assistant in TypeScript
+  name: OpenAI AWS
+  description: OpenAI assistant in TS on Slack Bolt on AWS Lambda.
   background_color: "#000000"
 features:
   bot_user:
-    display_name: OpenAI TS
+    display_name: OpenAI AWS
     always_online: true
 oauth_config:
   scopes:

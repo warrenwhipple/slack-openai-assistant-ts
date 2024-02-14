@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "target": "es2022",
+    "module": "es2022",
+    "lib": ["es2022"],
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
-    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "allowJs": true,
     "sourceMap": true,
     "rootDir": "src",
     "outDir": "dist"

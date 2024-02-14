@@ -1,26 +1,22 @@
 {
   "name": "slack-openai-assistant-ts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/index.js",
-  "type": "module",
+  "private": true,
   "scripts": {
-    "build": "tsc -p .",
-    "build:watch": "tsc -w -p .",
-    "start": "npm run build && node dist/app.js",
+    "dev": "npx serverless offline --noPrependStageInUrl",
+    "localtunnel": "npx localtunnel -p 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Warren Whipple",
-  "license": "ISC",
   "dependencies": {
     "@slack/bolt": "^3.17.1",
     "dotenv": "^16.4.1",
+    "esbuild": "^0.20.0",
     "node-fetch": "^3.3.2",
     "openai": "^4.26.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",
-    "ts-node": "^10.9.2",
+    "serverless-esbuild": "^1.51.0",
+    "serverless-offline": "^13.3.3",
     "typescript": "^5.3.3"
   }
 }
